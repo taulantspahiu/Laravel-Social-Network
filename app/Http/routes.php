@@ -12,21 +12,21 @@
 */
 
 Route::group(['middleware' => ['web']], function() {
-    
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+    Route::post('/signup', [
+        'uses' => 'UserController@postSignUp', //uses key, the controller that we are using
+        'as' =>'signup'  // give route a name to make it identificable accross the application
+    ]);
+    Route::post('signin', [
+       'uses' => 'UserController@postSignIn',
+       'as' => 'signin'
+    ]);
+    Route::get('/dashboard', [
+        'uses' => 'UserController@getDashboard',
+        'as' => 'dashboard',
+        'middleware' => 'auth'
+    ]);    
 });
 
-Route::get('/', function () {
-        return view('welcome');
-});
-Route::post('/signup', [
-    'uses' => 'UserController@postSignUp', //uses key, the controller that we are using
-    'as' =>'signup'  // give route a name to make it identificable accross the application
-]);
-Route::post('signin', [
-   'uses' => 'UserController@postSignIn',
-   'as' => 'signin'
-]);
-Route::get('/dashboard', [
-    'uses' => 'UserController@getDashboard',
-    'as' => 'dashboard'
-]);
