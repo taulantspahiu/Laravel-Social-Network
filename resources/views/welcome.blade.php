@@ -1,45 +1,56 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title')
+    Welcome!
+@endsection
 
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
+@section('content')
+    @if(count($errors) > 0)
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <ul>
+                    @foreach ($errors->all() as $error) 
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
             </div>
         </div>
-    </body>
-</html>
+    @endif
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Sign Up</h3>
+            <form action="{{ route('signup') }}" method="post">
+                <div class="form-group {{ $errors->has('email') ? 'alert alert-danger' : ''}}">
+                    <label for="email">Your email</label>
+                    <input class="form-control" type="text" name="email" id="email" value = "{{ Request::old('email') }}">
+                </div>
+                <div class="form-group {{ $errors->has('first-name') ? 'alert alert-danger' : ''}}">
+                    <label for="first_name">Your First Name</label>
+                    <input class="form-control" type="text" name="first_name" id="first_name" value = "{{ Request::old('first_name') }}">
+                </div>
+                <div class="form-group {{ $errors->has('password') ? 'alert alert-danger' : ''}}">
+                    <label for="password">Your password</label>
+                    <input class="form-control" type="password" name="password" id="password" value = "{{ Request::old('password') }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="hidden" name="_token" value="{{ Session::token() }}"> <!--security for cross site attacks-->
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Sign In</h3>
+            <form action="{{ route('signin') }}" method="post">
+                <div class="form-group {{ $errors->has('email') ? 'alert alert-danger' : ''}}">
+                    <label for="email">Your email</label>
+                    <input class="form-control" type="text" name="email" id="email" value = "{{ Request::old('email') }}">
+                </div>
+                <div class="form-group {{ $errors->has('password') ? 'alert alert-danger' : ''}}">
+                    <label for="password">Your password</label>
+                    <input class="form-control" type="password" name="password" id="password" value = "{{ Request::old('password') }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
+            </form>
+        </div>
+    </div>
+@endsection
