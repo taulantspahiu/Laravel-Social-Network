@@ -2,10 +2,16 @@
 
 namespace App;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class User extends Authenticatable
+class User extends Model implements Authenticatable 
 {
+    use \Illuminate\Auth\Authenticatable;
     
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
 }
