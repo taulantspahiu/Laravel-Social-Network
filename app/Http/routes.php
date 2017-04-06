@@ -30,9 +30,22 @@ Route::get('/postdelete/{post_id}', [
     'as' => 'post.delete',
     'middleware' => 'auth'
 ]);
-Route::post('/edit', function(\Illuminate\Http\Request $request) {
-    return response()->json(['message' => $request['postId']]);
-})->name('edit');
+Route::post('/edit', [
+    'uses' => 'PostController@postEditPost',
+    'as' => 'post.edit'
+]);
+Route::get('/account', [
+    'uses' => 'UserController@getAccount',
+    'as' => 'account'
+]);
+Route::get('/userimage/{filename}', [
+    'uses' => 'UserController@getUserImage',
+    'as' => 'account.image'
+]);
+Route::post('/updatesave', [
+    'uses' => 'UserController@postSaveAccount',
+    'as' => 'account.save'
+]);
 
 
 /*

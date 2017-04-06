@@ -37,7 +37,7 @@
         </div>
     </section>
     
-    <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
+    <div class="modal fade edit-modal" tabindex="-1" role="dialog" id="edit-modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -62,6 +62,6 @@
     
     <script>
         var token = '{{ Session::token() }}';
-        var url = '{{ route("edit") }}';
+        var url = '{{ route("post.edit") }}';
     </script>
 @endsection

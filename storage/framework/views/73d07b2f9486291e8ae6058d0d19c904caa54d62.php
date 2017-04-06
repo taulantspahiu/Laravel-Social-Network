@@ -36,7 +36,7 @@
         </div>
     </section>
     
-    <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal">
+    <div class="modal fade edit-modal" tabindex="-1" role="dialog" id="edit-modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -61,7 +61,7 @@
     
     <script>
         var token = '<?php echo e(Session::token()); ?>';
-        var url = '<?php echo e(route("edit")); ?>';
+        var url = '<?php echo e(route("post.edit")); ?>';
     </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
