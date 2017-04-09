@@ -14,7 +14,7 @@
     </section>
     <section class="row posts">
         <div class="col-md-6 col-md-offset-3">
-            <header><h3>What other people say?</h3></header>
+            <h3>What other people say?</h3>
             <?php foreach($posts as $post): ?>
                 <article class="post" data-postid="<?php echo e($post->id); ?>">
                     <p id="post-edit"><?php echo e($post->body); ?></p>
@@ -23,11 +23,11 @@
 
                     </div>
                     <div class="interaction">
-                        <a href="#" class="like">Like</a> |
-                        <a href="#" class="like">Dislike</a> 
+                        <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'); ?></a> |
+                        <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You don\'t like this post' : 'Dislike' : 'Dislike'); ?></a>
                         <?php if(Auth::user() == $post->user): ?>
                             |
-                            <a href="#" class="edit" data-postid="<?php echo e($post->id); ?>">Edit</a> |
+                            <a href="#" class="edit">Edit</a> |
                             <a href="<?php echo e(route('post.delete', ['post_id' => $post->id])); ?>">Delete</a>
                         <?php endif; ?>
                     </div>
