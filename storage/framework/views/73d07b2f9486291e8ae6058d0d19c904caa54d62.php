@@ -27,7 +27,7 @@
                         <a href="#" class="like"><?php echo e(Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You don\'t like this post' : 'Dislike' : 'Dislike'); ?></a>
                         <?php if(Auth::user() == $post->user): ?>
                             |
-                            <a href="#" class="edit">Edit</a> |
+                            <a href="#" class="edit" data-postid="<?php echo e($post->id); ?>">Edit</a> |
                             <a href="<?php echo e(route('post.delete', ['post_id' => $post->id])); ?>">Delete</a>
                         <?php endif; ?>
                     </div>
