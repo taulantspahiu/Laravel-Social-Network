@@ -4,6 +4,19 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="row">
+        <div class="col-xs-offset-2 col-xs-8 col-sm-offset-3 col-sm-6">
+            <div class="login-form form-group text-center">
+                <h1>A Social Network for people who love Vacations</h1>
+                <label>Login or create an account to enter</label>
+                <br>
+                <div class="login-buttons">
+                    <a href="/sign-up" class="btn btn-danger col-xs-12 col-sm-5 text-left">Sign Up</a>
+                    <a href="/sign-in" class="btn btn-danger col-xs-12 col-sm-5 text-right">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="row">
         <div class="col-md-6">
             <h3>Sign Up</h3>
             <form action="<?php echo e(route('signup')); ?>" method="post">
@@ -20,7 +33,7 @@
                     <input class="form-control" type="password" name="password-signup" id="password-signup" value = "<?php echo e(Request::old('password-signup')); ?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <input type="hidden" name="_token" value="<?php echo e(Session::token()); ?>"> <!--security for cross site attacks-->
+                <input type="hidden" name="_token" value="<?php echo e(Session::token()); ?>">
             </form>
         </div>
         <div class="col-md-6">
@@ -38,6 +51,6 @@
                 <input type="hidden" name="_token" value="<?php echo e(Session::token()); ?>">
             </form>
         </div>
-    </div>
+    </div>-->
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,6 +1,8 @@
 .new-post {
-    padding: 16px 0;
+    padding: 5px 0 20px 0;
     border-bottom: 1px solid #ccc;
+    border: 1px solid red;
+    background-color: #f8f8f8;
 }
 
 .new-post header,
@@ -39,4 +41,56 @@
     border: 1px solid green;
     padding: 5px 10px;
     color: green;
+}
+
+.login-form {
+    background-color: transparent;
+    height: 300px;
+    margin: 50px 0 0 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    font-size: 20px;
+     
+}
+
+.login-buttons {
+    margin: 200px 10px 0 10px;
+}
+
+.login-buttons > a {
+    margin: 10px;
+}
+
+.login > div, .signup > div {
+    padding-bottom: 15px;
+    border: 1px solid red;
+    background-color: #f8f8f8;
+}
+
+body {
+    background: url("../img/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.dashboard {
+    background-color: #f8f8f8;
+}
+
+@media (max-width: 400px) {
+    .login-buttons {
+        margin: 10% 10px 0 10px;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 767px) {
+
+}
+
+@media (min-width: 768px) {
+    .login, .signup {
+        margin-top: 150px; 
+    }
 }

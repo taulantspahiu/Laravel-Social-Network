@@ -52,6 +52,10 @@ Route::post('/updatesave', [
 ]);
 
 
+/*Views*/
+Route::get('/sign-up', 'PageController@signup');
+Route::get('/sign-in', 'PageController@login');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
